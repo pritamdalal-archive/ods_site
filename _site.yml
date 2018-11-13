@@ -1,0 +1,14 @@
+name: "ods_websit"
+output_dir: "."
+navbar:
+  title: "Option Data Science"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
+output:
+  html_document:
+    theme: spacelab
+    highlight: default
+    css: style.css

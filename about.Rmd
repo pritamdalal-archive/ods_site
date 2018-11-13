@@ -1,0 +1,5 @@
+---
+title: "About"
+---
+
+A boutique consultancy focusing on the intersection between options and data science. 
