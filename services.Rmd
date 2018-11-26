@@ -1,0 +1,82 @@
+---
+title: ""
+---
+
+&nbsp;
+
+
+## **Consulting**
+In 10 years of quantitative finance experience we have implemented quantitative volatility trading strategies, backtested annuity hedging strategies, and built a historical options database, just to name a few.  If you have an quantitative finance analysis project, we can add a valuable, field-tested perspective.  
+
+## **Bespoke Training** 
+Given the staggering speed of financial and technical innovation in options markets, learning is a lifelong journey.  At ODS we are passionate about education.  Our greatest strength is clearly communicating the intricacies of applying data science to quantitative finance.  Our material has been developed specifically for the options industry, and much of it has been adopted by the University of Minnesota Masters of Financial Mathematics program.
+
+
+```{r, loading_packages, include=FALSE}
+library(fOptions)
+library(bizdays)
+library(tidyverse)
+library(gridExtra)
+```
+
+```{r, services_art, echo=FALSE, fig.height=3.25, fig.width=8, fig.align="center"}
+df_market_history <- 
+    read_csv("practice_market_history.csv", col_types = cols())
+
+df_liquidity <-
+  df_market_history %>% 
+    group_by(underlying) %>% 
+    summarize(daily_volume = (sum(volume) / nrow(df_market_history %>% distinct(trade_date)))
+              ,avg_spread = mean(ask - bid)) %>% 
+    arrange(desc(daily_volume))
+
+
+# let's reproduce this graph using ggplot()
+p1 <- 
+  ggplot(data = df_liquidity) +
+  geom_point(mapping = aes(x = log(daily_volume), y = avg_spread), size = 0.75, na.rm = TRUE) +
+  geom_smooth(mapping = aes(x = log(daily_volume), y = avg_spread, alpha = 0.3), se = FALSE, method = "loess", na.rm = TRUE) +
+  scale_y_continuous(limits = c(0, 0.2)) +
+  theme(axis.title.x=element_blank()
+        , axis.text.x=element_blank()
+        , axis.ticks.x=element_blank()
+        , axis.title.y=element_blank()
+        , axis.text.y=element_blank()
+        , axis.ticks.y=element_blank()
+        , legend.position="none"
+  )
+
+
+df_spy_time <-
+  df_market_history %>% 
+    filter(underlying == "SPY") %>%
+    filter(expiration == as.Date("2013-09-21")) %>% 
+    arrange(trade_date, strike)
+
+
+# log-strike, like a boss
+p2 <- 
+    ggplot(data = df_spy_time %>% filter(trade_date < as.Date("2013-09-01"))) +
+    geom_line(
+        mapping = aes(x = log(strike/implied_forward)
+        , y = implied_vol, group = trade_date, color = trade_date)
+        , size = 0.75
+        , alpha = 0.75
+    ) +
+  theme(axis.title.x=element_blank()
+        , axis.text.x=element_blank()
+        , axis.ticks.x=element_blank()
+        , axis.title.y=element_blank()
+        , axis.text.y=element_blank()
+        , axis.ticks.y=element_blank()
+        , legend.position="none"
+  )
+
+gridExtra::grid.arrange(suppressWarnings(p1), p2, nrow = 1)
+```
+
+
+
+
+
+

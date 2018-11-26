@@ -1,5 +1,130 @@
 ---
-title: "Option Data Science"
+title: ""
 ---
 
-A boutique consultancy focused on the intersection of options and data science.
+&nbsp;
+
+## **Option Data Science**
+
+ODS is a a boutique consultancy focused on the intersection between data science and volatility markets.  We serve our clients by lending expertise to consultative projects and by providing bespoke training in financial data analysis.
+
+Whether it's historical backtesting, database design, options training for developers, or data analysis training for traders, we can help.  
+
+
+```{r, loading_packages, include=FALSE}
+library(fOptions)
+library(bizdays)
+library(tidyverse)
+library(gridExtra)
+```
+
+
+```{r, greeks_by_moniness, echo=FALSE, out.width="67%", fig.align="center"}
+
+type = "c"
+upx = seq(90, 110, 1)
+strike = 100
+time = 21/252
+rf = 0.01
+div = 0
+vol = 0.25
+
+option_values <-
+  GBSCharacteristics(
+    TypeFlag = type
+    , S = upx
+    , X = strike
+    , Time = time
+    , r = rf
+    , b = div
+    , sigma = vol
+  )
+
+
+graph_values <-
+  tibble(
+    upx = upx
+    , intrinsic = map_dbl(upx, function(x) max(x - strike, 0))
+    , px = option_values$premium
+    , delta = option_values$delta
+    , vega = option_values$vega / 100
+    , theta = option_values$theta / 252
+  )
+
+
+p1 <-
+ggplot(data = graph_values ) +
+  geom_line(aes(x = upx, y = intrinsic), size = 0.75, alpha = 0.5) +
+  geom_line(aes(x = upx, y = px - intrinsic), color = "green4", size = 1.0, alpha = 0.5) +
+  geom_vline(xintercept = 100, color = "red", lty = "dashed") +
+  theme(axis.title.x=element_blank()
+        , axis.text.x=element_blank()
+        , axis.ticks.x=element_blank()
+        , axis.title.y=element_blank()
+        , axis.text.y=element_blank()
+        , axis.ticks.y=element_blank()
+  ) +
+  labs(
+       x = ""
+       ,y = ""
+  ) +
+  annotate("text", label = "extrinsic value" , x = 94, y = 9.7, size = 4, colour = "grey37")
+
+p2 <-
+ggplot(data = graph_values ) +
+  geom_line(aes(x = upx, y = delta), color = "blue", size = 1.0, alpha = 0.5) +
+  geom_vline(xintercept = 100, color = "red", lty = "dashed") +
+  theme(axis.title.x=element_blank()
+    , axis.text.x=element_blank()
+    , axis.ticks.x=element_blank()
+    , axis.title.y=element_blank()
+    , axis.text.y=element_blank()
+    , axis.ticks.y=element_blank()
+  ) +
+  labs(
+       x = ""
+       , y = ""
+  ) +
+  annotate("text", label = "delta" , x = 91.5, y = 0.875, size = 4, colour = "grey37")
+
+
+p3 <-
+ggplot(data = graph_values ) +
+  geom_line(aes(x = upx, y = vega), color = "orange", size = 1.0, alpha = 0.5) +
+  geom_vline(xintercept = 100, color = "red", lty = "dashed") +
+  theme(axis.title.x=element_blank()
+    , axis.text.x=element_blank()
+    , axis.ticks.x=element_blank()
+    , axis.title.y=element_blank()
+    , axis.text.y=element_blank()
+    , axis.ticks.y=element_blank()
+  ) +
+  labs(
+       x = ""
+       , y = ""
+  ) +
+  annotate("text", label = "vega" , x = 91.5, y = .11, size = 4, colour = "grey37")
+
+p4 <-
+ggplot(data = graph_values ) +
+  geom_line(aes(x = upx, y = theta), color = "pink", size = 1.0) +
+  geom_vline(xintercept = 100, color = "red", lty = "dashed") +
+  theme(axis.title.x=element_blank()
+    , axis.text.x=element_blank()
+    , axis.ticks.x=element_blank()
+    , axis.title.y=element_blank()
+    , axis.text.y=element_blank()
+    , axis.ticks.y=element_blank()
+  ) +
+  labs(
+       x = ""
+       , y = ""
+  ) +
+  annotate("text", label = "theta" , x = 93, y = -0.025, size = 4, colour = "grey37")
+
+
+
+gridExtra::grid.arrange(p1, p2, p3, p4
+                        , nrow = 2)
+                        #, top = "Greeks vs Underlying Price")
+```

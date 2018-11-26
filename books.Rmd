@@ -1,7 +1,29 @@
 ---
-title: "Books"
+title: ""
 ---
 
-Here are my books:
+&nbsp;
 
-[My First Book](https://pritamdalal.github.io/bookdown-start/)
+## **Books**
+
+The foundation of our bespoke analysis training this series of books that have been developed here at ODS.  They distill thousands of hours study through the filter of a decade of real world experience.  These books have always been, and always will be, freely available online.
+
+[Learning Options from Data](https://pritamdalal.github.io/lod_book/) - an innovative training manual covering the fundamentals of options theory and practice.  The core philosophy behind this book is that wrangling and analyzing options data is one of the best ways to master the complex world of volatility markets.
+
+
+## **Other Resources**
+In addition to the books that have been developed in-house, the following works are reflected in our pedagogy and consulting.
+
+*R for Data Science* - Hadley Wickham and Garrett Grolemond
+
+*Advanced R* - Hadley Wickham
+
+*Python for Data Analysis* - Wes McKinney
+
+*Python Data Science Handbook* - Jake VanderPlas
+
+*Options, Futures, and Other Derivatives* - John Hull
+
+*Derivatives Markets* - Robert McDonald
+
+*Risk and Asset Allocation* - Attilio Meucci
