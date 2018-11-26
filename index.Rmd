@@ -54,8 +54,8 @@ graph_values <-
 
 p1 <-
 ggplot(data = graph_values ) +
-  geom_line(aes(x = upx, y = intrinsic), size = 0.75, alpha = 0.5) +
-  geom_line(aes(x = upx, y = px - intrinsic), color = "green4", size = 1.0, alpha = 0.5) +
+  geom_line(aes(x = upx, y = intrinsic), size = 0.75, alpha = 0.65) +
+  geom_line(aes(x = upx, y = px - intrinsic), color = "green4", size = 1.0, alpha = 0.75) +
   geom_vline(xintercept = 100, color = "red", lty = "dashed") +
   theme(axis.title.x=element_blank()
         , axis.text.x=element_blank()
@@ -68,11 +68,11 @@ ggplot(data = graph_values ) +
        x = ""
        ,y = ""
   ) +
-  annotate("text", label = "extrinsic value" , x = 94, y = 9.7, size = 4, colour = "grey37")
+  annotate("text", label = "extrinsic" , x = 92, y = 9.65, size = 4, colour = "grey37")
 
 p2 <-
 ggplot(data = graph_values ) +
-  geom_line(aes(x = upx, y = delta), color = "blue", size = 1.0, alpha = 0.5) +
+  geom_line(aes(x = upx, y = delta), color = "blue", size = 1.0, alpha = 0.6) +
   geom_vline(xintercept = 100, color = "red", lty = "dashed") +
   theme(axis.title.x=element_blank()
     , axis.text.x=element_blank()
@@ -90,7 +90,7 @@ ggplot(data = graph_values ) +
 
 p3 <-
 ggplot(data = graph_values ) +
-  geom_line(aes(x = upx, y = vega), color = "orange", size = 1.0, alpha = 0.5) +
+  geom_line(aes(x = upx, y = vega), color = "orange", size = 1.0, alpha = 0.7) +
   geom_vline(xintercept = 100, color = "red", lty = "dashed") +
   theme(axis.title.x=element_blank()
     , axis.text.x=element_blank()

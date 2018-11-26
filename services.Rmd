@@ -34,8 +34,8 @@ df_liquidity <-
 # let's reproduce this graph using ggplot()
 p1 <- 
   ggplot(data = df_liquidity) +
-  geom_point(mapping = aes(x = log(daily_volume), y = avg_spread), size = 0.75, na.rm = TRUE) +
-  geom_smooth(mapping = aes(x = log(daily_volume), y = avg_spread, alpha = 0.3), se = FALSE, method = "loess", na.rm = TRUE) +
+  geom_point(mapping = aes(x = log(daily_volume), y = avg_spread, color="grey37"), size = 0.75, na.rm = TRUE) +
+  geom_smooth(mapping = aes(x = log(daily_volume), y = avg_spread), color="steelblue1", se = FALSE, method = "loess", na.rm = TRUE) +
   scale_y_continuous(limits = c(0, 0.2)) +
   theme(axis.title.x=element_blank()
         , axis.text.x=element_blank()
@@ -61,7 +61,7 @@ p2 <-
         mapping = aes(x = log(strike/implied_forward)
         , y = implied_vol, group = trade_date, color = trade_date)
         , size = 0.75
-        , alpha = 0.75
+        , alpha = 0.65
     ) +
   theme(axis.title.x=element_blank()
         , axis.text.x=element_blank()
