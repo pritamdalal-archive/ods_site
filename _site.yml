@@ -8,7 +8,7 @@ navbar:
     - text: "R for Finance"
       menu:
         - text: "Book"
-          href: https://pritamdalal.github.io/lod_book/
+          href: https://pritamdalal.github.io/rff_book/
         - text: "Courses"
           href: https://pritamdalal.github.io/rff_course/
     - text: "About"
