@@ -2,14 +2,20 @@
 title: ""
 ---
 
+<style>
+    body .main-container {
+        max-width: 800px;
+    }
+</style>
+
 &nbsp;
 
 
 ## **Consulting**
-In 10 years of quantitative finance experience we have implemented quantitative volatility trading strategies, back-tested annuity hedging programs, and built a historical options database, just to name a few.  If you have a quantitative finance analysis project, we can add valuable, field-tested expertise.  
+In over a decade of working in quantitative finance experience we have implemented quantitative volatility trading strategies, back-tested annuity hedging programs, and built a historical options database, just to name a few.  If you have a quantitative finance analysis project, we can add valuable, field-tested expertise.  
 
 ## **Bespoke Training** 
-Given the staggering speed of financial and technical innovation in options markets, learning is a lifelong journey.  At ODS we are passionate about education.  Our greatest strength is clearly communicating the intricacies of applying data science to quantitative finance.  Our material has been developed specifically for the options industry, and much of it has been adopted by the University of Minnesota Masters of Financial Mathematics program.
+Given the staggering speed of financial and technical innovation in options markets, learning is a lifelong journey.  At ODS we are passionate about education.  Our greatest strength is clearly communicating the fundamental skills needed to apply data science to quantitative finance.  Our material has been developed specifically for finance professionals, and has been codified into [courses](https://pritamdalal.github.io/fm5990_python_site/index.html) for the [University of Minnesota Masters of Financial Mathematics](https://math.umn.edu/mcfam/financial-mathematics) program.
 
 
 ```{r, loading_packages, include=FALSE}

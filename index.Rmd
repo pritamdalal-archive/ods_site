@@ -2,6 +2,12 @@
 title: ""
 ---
 
+<style>
+    body .main-container {
+        max-width: 800px;
+    }
+</style>
+
 &nbsp;
 
 ## **Option Data Science**

@@ -5,12 +5,16 @@ navbar:
   left:
     - text: "Services"
       href: services.html
-    - text: "Books"
-      href: books.html
+    - text: "R for Finance"
+      menu:
+        - text: "Book"
+          href: https://pritamdalal.github.io/lod_book/
+        - text: "Courses"
+          href: https://pritamdalal.github.io/rff_course/
     - text: "About"
       href: about.html
 output:
   html_document:
     theme: cosmo
-    highlight: textmate
+    highlight: default
     css: style.css
